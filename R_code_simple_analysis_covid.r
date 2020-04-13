@@ -22,5 +22,28 @@ ggplot(covaz, aes(x=date,y=total.deaths))+geom_line(col="red",linetype=1)+xlab(N
 ggplot(covaz, aes(x=date,y=total.recovered))+geom_line(col="blue",linetype=1)+xlab(NULL)+ylab("Number of Recoveries")+labs(title = "Coronavirus cases in Azerbaijan", subtitle = "Recoveries", caption = "(based on data from https://cabmin.gov.az/)")+theme_grey(base_size = 13)+theme(axis.text = element_text(colour = "black", size = rel(0.7)))
 
 
+# plotting altogether
+# solution 1
+ggplot() +
+# n cases
+geom_line(aes(x=date, y=total.cases)) + 
+# total deaths
+geom_line(aes(x=date, y=total.deaths),col="red") + 
+# total recovered
+geom_line(aes(x=date, y=total.recovered),col="blue") +
+# labs
+labs(x = "date", y = "N") 
+
+# solution 2
+ggplot(covaz, aes(x=date)) +
+# n cases
+geom_line(aes(y=total.cases)) + 
+# total deaths
+geom_line(aes(y=total.deaths),col="red") + 
+# total recovered
+geom_line(aes(y=total.recovered),col="blue") +
+# labs
+labs(x = "date", y = "N", color = "Variable") 
+
 
 
